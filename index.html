@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PharmaBrain — نظام صيدليتك الذكي والمتكامل</title>
+<meta name="description" content="فارما برين — نظام إدارة الصيدليات الذكي للعراق: بيع، أدوية، مذاخر، ومراجعين مع قارئ فواتير ذكي. يعمل بدون إنترنت. PharmaBrain — smart pharmacy management: offline-first POS, inventory & AI invoice scanning.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<meta property="og:title" content="PharmaBrain — فارما برين">
+<meta property="og:description" content="نظام إدارة الصيدليات الذكي — بيع، أدوية، مذاخر، وقارئ فواتير ذكي. يعمل بدون إنترنت.">
+<meta property="og:image" content="https://pharmabrain.io/assets/og-cover.png">
+<meta property="og:url" content="https://pharmabrain.io/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --petrol: #0B3A40;
+    --amber: #E0992A;
+    --on-amber: #231603;
+    --ink: #0A0A0A;
+    --text: #0F172A;
+    --muted: #475569;
+    --faint: #94A3B8;
+    --line: #E2E8F0;
+    --canvas: #F8FAFC;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: Tajawal, 'Plus Jakarta Sans', sans-serif;
+    background: var(--canvas);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  [dir="ltr"] body, body.en { font-family: 'Plus Jakarta Sans', Tajawal, sans-serif; }
+  .latin { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+  /* nav */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand img { width: 32px; height: 32px; }
+  .brand span { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; color: var(--ink); font-weight: 400; }
+  .brand b { font-weight: 800; }
+  .nav-links { display: flex; align-items: center; gap: 20px; }
+  .nav-links a { font-size: 14.5px; font-weight: 500; color: var(--muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--petrol); }
+  .lang-btn {
+    font-size: 13px; font-weight: 700; color: var(--muted);
+    background: none; border: 1.5px solid var(--line); border-radius: 8px;
+    padding: 6px 11px; cursor: pointer;
+  }
+  .lang-btn:hover { border-color: var(--petrol); color: var(--petrol); }
+  .btn-amber {
+    background: var(--amber); color: var(--on-amber) !important;
+    font-weight: 700; border-radius: 10px; padding: 10px 18px;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 9px;
+    border: none; cursor: pointer; font-size: 15px; font-family: inherit;
+    transition: filter .15s;
+  }
+  .btn-amber:hover { filter: brightness(0.95); }
+  .btn-ghost {
+    background: #fff; border: 1.5px solid #CBD5E1; color: #334155;
+    font-weight: 700; border-radius: 10px; padding: 10px 18px;
+    text-decoration: none; display: inline-flex; align-items: center; font-size: 15px;
+  }
+  .btn-ghost:hover { border-color: var(--petrol); color: var(--petrol); }
+  .wa-ico { width: 17px; height: 17px; background: currentColor;
+    -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"%3E%3C/path%3E%3C/svg%3E') center/contain no-repeat;
+    mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"%3E%3C/path%3E%3C/svg%3E') center/contain no-repeat; }
+
+  /* hero */
+  .hero { display: flex; align-items: center; gap: 40px; padding: 64px 0 48px; flex-wrap: wrap; }
+  .hero-text { flex: 1 1 340px; }
+  h1 { font-weight: 700; font-size: clamp(32px, 5vw, 48px); line-height: 1.25; color: var(--ink); }
+  .hero-sub { font-size: 17px; color: var(--muted); margin-top: 16px; max-width: 430px; }
+  .hero-ctas { display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+  .trust { display: flex; gap: 18px; margin-top: 26px; flex-wrap: wrap; }
+  .trust span { font-size: 13px; font-weight: 500; color: var(--faint); display: flex; align-items: center; gap: 6px; }
+  .trust i { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+
+  /* app vignette */
+  .vignette {
+    flex: 1 1 340px; max-width: 460px; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 12px 32px rgba(11,58,64,0.18); display: flex; min-height: 240px; background: #fff;
+  }
+  .vg-side { width: 68px; background: var(--petrol); padding: 12px 9px; display: flex; flex-direction: column; gap: 6px; }
+  .vg-side img { width: 24px; height: 24px; margin-bottom: 8px; }
+  .vg-side i { display: block; height: 8px; border-radius: 3px; background: rgba(255,255,255,0.18); }
+  .vg-side i.on { background: var(--amber); }
+  .vg-main { flex: 1; background: var(--canvas); padding: 16px; }
+  .vg-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+  .vg-label { font-size: 10px; font-weight: 800; letter-spacing: 0.08em; color: var(--faint); }
+  .vg-total { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 800; color: var(--text); direction: ltr; text-align: start; }
+  .vg-row { display: flex; gap: 8px; }
+  .vg-pay { flex: 1; background: var(--amber); color: var(--on-amber); font-weight: 700; font-size: 13px; padding: 11px; border-radius: 8px; text-align: center; }
+  .vg-hold { background: #fff; border: 1px solid #CBD5E1; color: #334155; font-weight: 700; font-size: 13px; padding: 11px 14px; border-radius: 8px; }
+  .vg-scan { display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; font-weight: 700; color: var(--muted); }
+  .vg-scan em { font-style: normal; color: #16A34A; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+
+  /* sections */
+  .section { padding: 48px 0; }
+  .kicker { font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); }
+  h2 { font-weight: 700; font-size: clamp(24px, 3.6vw, 32px); color: var(--ink); margin-top: 6px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 28px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .card .ico {
+    width: 30px; height: 30px; background: var(--petrol); border-radius: 9px;
+    display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px;
+  }
+  .card .ico i { width: 16px; height: 16px; background: var(--amber); }
+  .card h3 { font-size: 16.5px; font-weight: 700; color: var(--text); }
+  .card p { font-size: 14px; color: #64748B; margin-top: 5px; }
+  .m-pos i { -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Ccircle cx="8" cy="21" r="1"/%3E%3Ccircle cx="19" cy="21" r="1"/%3E%3Cpath d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/%3E%3C/svg%3E') center/contain no-repeat; mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Ccircle cx="8" cy="21" r="1"/%3E%3Ccircle cx="19" cy="21" r="1"/%3E%3Cpath d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/%3E%3C/svg%3E') center/contain no-repeat; }
+  .m-scan i { -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M3 7V5a2 2 0 0 1 2-2h2"/%3E%3Cpath d="M17 3h2a2 2 0 0 1 2 2v2"/%3E%3Cpath d="M21 17v2a2 2 0 0 1-2 2h-2"/%3E%3Cpath d="M7 21H5a2 2 0 0 1-2-2v-2"/%3E%3Cline x1="7" x2="17" y1="12" y2="12"/%3E%3C/svg%3E') center/contain no-repeat; mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M3 7V5a2 2 0 0 1 2-2h2"/%3E%3Cpath d="M17 3h2a2 2 0 0 1 2 2v2"/%3E%3Cpath d="M21 17v2a2 2 0 0 1-2 2h-2"/%3E%3Cpath d="M7 21H5a2 2 0 0 1-2-2v-2"/%3E%3Cline x1="7" x2="17" y1="12" y2="12"/%3E%3C/svg%3E') center/contain no-repeat; }
+  .m-off i { -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M12 2v8"/%3E%3Cpath d="m4.93 10.93 1.41 1.41"/%3E%3Cpath d="M2 18h2"/%3E%3Cpath d="M20 18h2"/%3E%3Cpath d="m19.07 10.93-1.41 1.41"/%3E%3Cpath d="M22 22H2"/%3E%3Cpath d="m8 6 4-4 4 4"/%3E%3Cpath d="M16 18a4 4 0 0 0-8 0"/%3E%3C/svg%3E') center/contain no-repeat; mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M12 2v8"/%3E%3Cpath d="m4.93 10.93 1.41 1.41"/%3E%3Cpath d="M2 18h2"/%3E%3Cpath d="M20 18h2"/%3E%3Cpath d="m19.07 10.93-1.41 1.41"/%3E%3Cpath d="M22 22H2"/%3E%3Cpath d="m8 6 4-4 4 4"/%3E%3Cpath d="M16 18a4 4 0 0 0-8 0"/%3E%3C/svg%3E') center/contain no-repeat; }
+  .m-lang i { -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Ccircle cx="12" cy="12" r="10"/%3E%3Cpath d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/%3E%3Cpath d="M2 12h20"/%3E%3C/svg%3E') center/contain no-repeat; mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Ccircle cx="12" cy="12" r="10"/%3E%3Cpath d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/%3E%3Cpath d="M2 12h20"/%3E%3C/svg%3E') center/contain no-repeat; }
+  .m-wa i { -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/%3E%3C/svg%3E') center/contain no-repeat; mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/%3E%3C/svg%3E') center/contain no-repeat; }
+  .m-chart i { -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M3 3v16a2 2 0 0 0 2 2h16"/%3E%3Cpath d="M18 17V9"/%3E%3Cpath d="M13 17V5"/%3E%3Cpath d="M8 17v-3"/%3E%3C/svg%3E') center/contain no-repeat; mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M3 3v16a2 2 0 0 0 2 2h16"/%3E%3Cpath d="M18 17V9"/%3E%3Cpath d="M13 17V5"/%3E%3C/svg%3E') center/contain no-repeat; }
+
+  /* CTA band */
+  .band { background: var(--petrol); border-radius: 18px; padding: 44px 32px; text-align: center; margin: 24px 0 48px; }
+  .band h2 { color: #fff; }
+  .band p { color: rgba(255,255,255,0.75); margin-top: 10px; font-size: 16px; }
+  .band .btn-amber { margin-top: 24px; font-size: 16px; padding: 13px 26px; }
+
+  /* footer */
+  footer { border-top: 1px solid var(--line); background: #fff; padding: 28px 0; }
+  .foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  .foot-links { display: flex; gap: 18px; }
+  .foot a { font-size: 13.5px; color: var(--muted); text-decoration: none; }
+  .foot a:hover { color: var(--petrol); }
+  .foot .fine { font-family: ui-monospace, monospace; font-size: 12px; color: var(--faint); }
+
+  @media (max-width: 640px) {
+    .nav-links a.nav-item { display: none; }
+    .hero { padding-top: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#">
+      <img src="assets/logo.svg" alt="PharmaBrain logo">
+      <span>Pharma<b>Brain</b></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-item" href="#features" data-ar="المميزات" data-en="Features">المميزات</a>
+      <a class="nav-item" href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+      <a class="btn-amber" href="https://wa.me/9647749537424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D8%A7%D9%8B%20%D8%B9%D9%86%20PharmaBrain" data-ar="اطلب عرضاً" data-en="Request a demo">اطلب عرضاً</a>
+    </div>
+  </div>
+</nav>
+
+<header class="container hero">
+  <div class="hero-text">
+    <h1 data-ar="نظام صيدليتك<br>الذكي والمتكامل" data-en="Intelligence<br>for your pharmacy">نظام صيدليتك<br>الذكي والمتكامل</h1>
+    <p class="hero-sub" data-ar="بيع، أدوية، مذاخر، ومراجعين — مع قارئ فواتير ذكي. يعمل بدون إنترنت ويتزامن مع السحابة."
+       data-en="POS, inventory, suppliers & patients — with an AI invoice reader. Works offline and syncs to the cloud.">بيع، أدوية، مذاخر، ومراجعين — مع قارئ فواتير ذكي. يعمل بدون إنترنت ويتزامن مع السحابة.</p>
+    <div class="hero-ctas">
+      <a class="btn-amber" href="https://wa.me/9647749537424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D8%A7%D9%8B%20%D8%B9%D9%86%20PharmaBrain">
+        <span class="wa-ico"></span>
+        <span data-ar="اطلب عرضاً عبر واتساب" data-en="Request a demo on WhatsApp">اطلب عرضاً عبر واتساب</span>
+      </a>
+      <a class="btn-ghost" href="#features" data-ar="المميزات" data-en="See features">المميزات</a>
+    </div>
+    <div class="trust">
+      <span><i></i><span data-ar="صيدليات العراق" data-en="Built for Iraq">صيدليات العراق</span></span>
+      <span><i></i><span data-ar="عربي + English" data-en="Arabic + English">عربي + English</span></span>
+      <span><i></i><span data-ar="يعمل بدون إنترنت" data-en="Offline-first">يعمل بدون إنترنت</span></span>
+    </div>
+  </div>
+
+  <div class="vignette" aria-hidden="true">
+    <div class="vg-side">
+      <img src="assets/logo.svg" alt="" style="filter: invert(1);">
+      <i class="on"></i><i></i><i></i><i></i>
+    </div>
+    <div class="vg-main">
+      <div class="vg-card">
+        <div class="vg-label" data-ar="الإجمالي المستحق" data-en="TOTAL DUE">الإجمالي المستحق</div>
+        <div class="vg-total latin">IQD 102,750</div>
+      </div>
+      <div class="vg-card vg-scan">
+        <span data-ar="قارئ الفواتير: باراسيتامول" data-en="Invoice scan: Paracetamol">قارئ الفواتير: باراسيتامول</span>
+        <em>✓ 124</em>
+      </div>
+      <div class="vg-row">
+        <div class="vg-pay" data-ar="إتمام البيع" data-en="Charge">إتمام البيع</div>
+        <div class="vg-hold" data-ar="تأجيل" data-en="Hold">تأجيل</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section container" id="features">
+  <div class="kicker" data-ar="المميزات" data-en="FEATURES">المميزات</div>
+  <h2 data-ar="كل ما تحتاجه صيدليتك في نظام واحد" data-en="Everything your pharmacy needs, in one system">كل ما تحتاجه صيدليتك في نظام واحد</h2>
+  <div class="grid">
+    <div class="card m-pos"><span class="ico"><i></i></span>
+      <h3 data-ar="بيع سريع" data-en="Fast POS">بيع سريع</h3>
+      <p data-ar="شاشة بيع بالباركود واختصارات لوحة المفاتيح، مع حسابات المراجعين والديون." data-en="Barcode-driven checkout with keyboard shortcuts, patient tabs and credit.">شاشة بيع بالباركود واختصارات لوحة المفاتيح، مع حسابات المراجعين والديون.</p></div>
+    <div class="card m-scan"><span class="ico"><i></i></span>
+      <h3 data-ar="قارئ فواتير ذكي" data-en="AI invoice reader">قارئ فواتير ذكي</h3>
+      <p data-ar="صوّر فاتورة المذخر — أو أرسلها من هاتفك — وتُضاف الأدوية والأسعار تلقائياً." data-en="Photograph a supplier invoice — or send it from your phone — and items land in stock automatically.">صوّر فاتورة المذخر — أو أرسلها من هاتفك — وتُضاف الأدوية والأسعار تلقائياً.</p></div>
+    <div class="card m-off"><span class="ico"><i></i></span>
+      <h3 data-ar="يعمل بدون إنترنت" data-en="Offline-first">يعمل بدون إنترنت</h3>
+      <p data-ar="بياناتك محفوظة على جهازك وتتزامن مع السحابة عند توفر الاتصال. لا توقف للبيع أبداً." data-en="Your data lives on your device and syncs to the cloud when online. Sales never stop.">بياناتك محفوظة على جهازك وتتزامن مع السحابة عند توفر الاتصال. لا توقف للبيع أبداً.</p></div>
+    <div class="card m-wa"><span class="ico"><i></i></span>
+      <h3 data-ar="تذكيرات واتساب" data-en="WhatsApp reminders">تذكيرات واتساب</h3>
+      <p data-ar="تذكير المراجعين بمواعيد إعادة صرف الدواء وتوفر النواقص — برسالة واتساب رسمية." data-en="Refill reminders and availability alerts to patients, via official WhatsApp messages.">تذكير المراجعين بمواعيد إعادة صرف الدواء وتوفر النواقص — برسالة واتساب رسمية.</p></div>
+    <div class="card m-chart"><span class="ico"><i></i></span>
+      <h3 data-ar="تقارير وجرد" data-en="Reports & stock">تقارير وجرد</h3>
+      <p data-ar="مخزون، صلاحيات، أرباح، وديون المذاخر — تقارير جاهزة للتصدير بضغطة زر." data-en="Inventory, expiries, profits and supplier balances — exportable reports in one click.">مخزون، صلاحيات، أرباح، وديون المذاخر — تقارير جاهزة للتصدير بضغطة زر.</p></div>
+    <div class="card m-lang"><span class="ico"><i></i></span>
+      <h3 data-ar="عربي + English" data-en="Arabic + English">عربي + English</h3>
+      <p data-ar="واجهة ثنائية اللغة بالكامل، يمين ويسار، بمصطلحات الصيدلية العراقية." data-en="Fully bilingual RTL/LTR interface, using real Iraqi pharmacy terminology.">واجهة ثنائية اللغة بالكامل، يمين ويسار، بمصطلحات الصيدلية العراقية.</p></div>
+  </div>
+</section>
+
+<section class="container" id="contact">
+  <div class="band">
+    <h2 data-ar="جرّب فارما برين في صيدليتك" data-en="Try PharmaBrain in your pharmacy">جرّب فارما برين في صيدليتك</h2>
+    <p data-ar="راسلنا على واتساب — نرتب لك عرضاً مباشراً على جهازك." data-en="Message us on WhatsApp — we'll set up a live demo on your machine.">راسلنا على واتساب — نرتب لك عرضاً مباشراً على جهازك.</p>
+    <a class="btn-amber" href="https://wa.me/9647749537424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D8%A7%D9%8B%20%D8%B9%D9%86%20PharmaBrain">
+      <span class="wa-ico"></span>
+      <span data-ar="اطلب عرضاً عبر واتساب" data-en="Request a demo on WhatsApp">اطلب عرضاً عبر واتساب</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <a class="brand" href="#"><img src="assets/logo.svg" alt=""><span>Pharma<b>Brain</b></span></a>
+    <div class="foot-links">
+      <a href="https://www.facebook.com/profile.php?id=61592744304766" data-ar="فيسبوك" data-en="Facebook">فيسبوك</a>
+      <a href="privacy.html" data-ar="سياسة الخصوصية" data-en="Privacy">سياسة الخصوصية</a>
+    </div>
+    <span class="fine">pharmabrain.io · © 2026 PharmaBrain</span>
+  </div>
+</footer>
+
+<script>
+  function applyLang(lang) {
+    var ar = lang === 'ar';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = ar ? 'rtl' : 'ltr';
+    document.getElementById('langBtn').textContent = ar ? 'EN' : 'ع';
+    document.querySelectorAll('[data-ar]').forEach(function (el) {
+      el.innerHTML = ar ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+    });
+    try { localStorage.setItem('pb_lang', lang); } catch (e) {}
+  }
+  function toggleLang() {
+    applyLang(document.documentElement.lang === 'ar' ? 'en' : 'ar');
+  }
+  try {
+    var saved = localStorage.getItem('pb_lang');
+    if (saved === 'en') applyLang('en');
+  } catch (e) {}
+</script>
+</body>
+</html>
