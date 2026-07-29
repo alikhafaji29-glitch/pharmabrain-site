@@ -87,24 +87,12 @@
   .trust span { font-size: 13px; font-weight: 500; color: var(--faint); display: flex; align-items: center; gap: 6px; }
   .trust i { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
 
-  /* app vignette */
-  .vignette {
-    flex: 1 1 340px; max-width: 460px; border-radius: 14px; overflow: hidden;
-    box-shadow: 0 12px 32px rgba(11,58,64,0.18); display: flex; min-height: 240px; background: #fff;
+  /* hero screenshot */
+  .hero-shot {
+    flex: 1 1 380px; max-width: 620px; border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--line); box-shadow: 0 14px 38px rgba(11,58,64,0.18); background: #fff;
   }
-  .vg-side { width: 68px; background: var(--petrol); padding: 12px 9px; display: flex; flex-direction: column; gap: 6px; }
-  .vg-side img { width: 24px; height: 24px; margin-bottom: 8px; }
-  .vg-side i { display: block; height: 8px; border-radius: 3px; background: rgba(255,255,255,0.18); }
-  .vg-side i.on { background: var(--amber); }
-  .vg-main { flex: 1; background: var(--canvas); padding: 16px; }
-  .vg-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
-  .vg-label { font-size: 10px; font-weight: 800; letter-spacing: 0.08em; color: var(--faint); }
-  .vg-total { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 800; color: var(--text); direction: ltr; text-align: start; }
-  .vg-row { display: flex; gap: 8px; }
-  .vg-pay { flex: 1; background: var(--amber); color: var(--on-amber); font-weight: 700; font-size: 13px; padding: 11px; border-radius: 8px; text-align: center; }
-  .vg-hold { background: #fff; border: 1px solid #CBD5E1; color: #334155; font-weight: 700; font-size: 13px; padding: 11px 14px; border-radius: 8px; }
-  .vg-scan { display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; font-weight: 700; color: var(--muted); }
-  .vg-scan em { font-style: normal; color: #16A34A; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+  .hero-shot img { display: block; width: 100%; height: auto; }
 
   /* sections */
   .section { padding: 48px 0; }
@@ -138,6 +126,23 @@
   .step { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; gap: 11px; align-items: flex-start; }
   .step em { font-style: normal; width: 24px; height: 24px; border-radius: 50%; background: var(--amber); color: var(--on-amber); font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
   .step p { font-size: 14px; color: var(--muted); margin: 0; }
+
+  .shot img { cursor: zoom-in; }
+  .shot-hint { text-align: center; font-size: 13px; color: var(--faint); margin-top: 16px; }
+
+  /* lightbox */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 100; background: rgba(10,10,10,0.92);
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+  }
+  .lightbox[hidden] { display: none; }
+  .lightbox img { max-width: 100%; max-height: 100%; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .lb-close {
+    position: absolute; top: 16px; inset-inline-end: 20px;
+    background: none; border: none; color: #fff; font-size: 40px; line-height: 1;
+    cursor: pointer; padding: 4px 12px; opacity: 0.8;
+  }
+  .lb-close:hover { opacity: 1; }
 
   /* CTA band */
   .band { background: var(--petrol); border-radius: 18px; padding: 44px 32px; text-align: center; margin: 24px 0 48px; }
@@ -196,25 +201,8 @@
     </div>
   </div>
 
-  <div class="vignette" aria-hidden="true">
-    <div class="vg-side">
-      <img src="assets/logo.svg" alt="" style="filter: invert(1);">
-      <i class="on"></i><i></i><i></i><i></i>
-    </div>
-    <div class="vg-main">
-      <div class="vg-card">
-        <div class="vg-label" data-ar="الإجمالي المستحق" data-en="TOTAL DUE">الإجمالي المستحق</div>
-        <div class="vg-total latin">IQD 102,750</div>
-      </div>
-      <div class="vg-card vg-scan">
-        <span data-ar="قارئ الفواتير: باراسيتامول" data-en="Invoice scan: Paracetamol">قارئ الفواتير: باراسيتامول</span>
-        <em>✓ 124</em>
-      </div>
-      <div class="vg-row">
-        <div class="vg-pay" data-ar="إتمام البيع" data-en="Charge">إتمام البيع</div>
-        <div class="vg-hold" data-ar="تأجيل" data-en="Hold">تأجيل</div>
-      </div>
-    </div>
+  <div class="hero-shot">
+    <img src="assets/shot-pos.png" alt="PharmaBrain point of sale" width="1500" height="793">
   </div>
 </header>
 
@@ -256,6 +244,12 @@
               data-en="One invoice photo → 13 items extracted with quantities, prices and expiry dates, auto-linked to your existing stock, with a warning when the invoice total doesn't add up.">صورة فاتورة واحدة ← 13 صنفاً مستخرجاً مع الكميات والأسعار وتواريخ الانتهاء، وربط تلقائي بالأدوية الموجودة، وتنبيه عند اختلاف إجمالي الفاتورة.</span>
       </figcaption>
     </figure>
+
+    <div class="steps">
+      <div class="step"><em>1</em><p data-ar="صوّر الفاتورة أو أرسلها من هاتفك" data-en="Photograph the invoice, or send it from your phone">صوّر الفاتورة أو أرسلها من هاتفك</p></div>
+      <div class="step"><em>2</em><p data-ar="الذكاء الاصطناعي يقرأ الأصناف والأسعار" data-en="The AI reads the items and prices">الذكاء الاصطناعي يقرأ الأصناف والأسعار</p></div>
+      <div class="step"><em>3</em><p data-ar="راجع وأكّد الاستلام — يدخل المخزون فوراً" data-en="Review, confirm — it lands in your stock">راجع وأكّد الاستلام — يدخل المخزون فوراً</p></div>
+    </div>
 
     <div class="shot-pair">
       <figure class="shot">
@@ -302,12 +296,14 @@
     </figure>
   </div>
 
-  <div class="steps">
-    <div class="step"><em>1</em><p data-ar="صوّر الفاتورة أو أرسلها من هاتفك" data-en="Photograph the invoice, or send it from your phone">صوّر الفاتورة أو أرسلها من هاتفك</p></div>
-    <div class="step"><em>2</em><p data-ar="الذكاء الاصطناعي يقرأ الأصناف والأسعار" data-en="The AI reads the items and prices">الذكاء الاصطناعي يقرأ الأصناف والأسعار</p></div>
-    <div class="step"><em>3</em><p data-ar="راجع وأكّد الاستلام — يدخل المخزون فوراً" data-en="Review, confirm — it lands in your stock">راجع وأكّد الاستلام — يدخل المخزون فوراً</p></div>
-  </div>
+  <p class="shot-hint" data-ar="اضغط أي صورة لعرضها بالحجم الكامل" data-en="Tap any screenshot to view it full size">اضغط أي صورة لعرضها بالحجم الكامل</p>
 </section>
+
+<!-- full-size screenshot viewer -->
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <img id="lbImg" src="" alt="">
+</div>
 
 <section class="container" id="contact">
   <div class="band">
@@ -349,6 +345,25 @@
     var saved = localStorage.getItem('pb_lang');
     if (saved === 'en') applyLang('en');
   } catch (e) {}
+
+  // Screenshot lightbox — the gallery images are downscaled to fit the grid,
+  // so let visitors open the full-size file.
+  (function () {
+    var box = document.getElementById('lightbox');
+    var img = document.getElementById('lbImg');
+    function close() { box.hidden = true; img.src = ''; document.body.style.overflow = ''; }
+    document.querySelectorAll('.shot img').forEach(function (el) {
+      el.addEventListener('click', function () {
+        img.src = el.src;
+        img.alt = el.alt;
+        box.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.getElementById('lbClose').addEventListener('click', close);
+    box.addEventListener('click', function (e) { if (e.target !== img) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+  })();
 </script>
 </body>
 </html>
