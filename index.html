@@ -126,6 +126,19 @@
   .m-wa i { -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/%3E%3C/svg%3E') center/contain no-repeat; mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/%3E%3C/svg%3E') center/contain no-repeat; }
   .m-chart i { -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M3 3v16a2 2 0 0 0 2 2h16"/%3E%3Cpath d="M18 17V9"/%3E%3Cpath d="M13 17V5"/%3E%3Cpath d="M8 17v-3"/%3E%3C/svg%3E') center/contain no-repeat; mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"%3E%3Cpath d="M3 3v16a2 2 0 0 0 2 2h16"/%3E%3Cpath d="M18 17V9"/%3E%3Cpath d="M13 17V5"/%3E%3C/svg%3E') center/contain no-repeat; }
 
+  /* screenshots */
+  .shots { display: grid; gap: 22px; margin-top: 30px; }
+  .shot { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(11,58,64,0.10); }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption { padding: 14px 18px; border-top: 1px solid var(--line); }
+  .shot b { display: block; font-size: 15.5px; font-weight: 700; color: var(--text); }
+  .shot span { font-size: 13.5px; color: #64748B; }
+  .shot-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 26px; }
+  .step { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; gap: 11px; align-items: flex-start; }
+  .step em { font-style: normal; width: 24px; height: 24px; border-radius: 50%; background: var(--amber); color: var(--on-amber); font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .step p { font-size: 14px; color: var(--muted); margin: 0; }
+
   /* CTA band */
   .band { background: var(--petrol); border-radius: 18px; padding: 44px 32px; text-align: center; margin: 24px 0 48px; }
   .band h2 { color: #fff; }
@@ -156,6 +169,7 @@
     </a>
     <div class="nav-links">
       <a class="nav-item" href="#features" data-ar="المميزات" data-en="Features">المميزات</a>
+      <a class="nav-item" href="#screens" data-ar="الشاشات" data-en="Screens">الشاشات</a>
       <a class="nav-item" href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
       <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
       <a class="btn-amber" href="https://wa.me/9647749537424?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D8%A7%D9%8B%20%D8%B9%D9%86%20PharmaBrain" data-ar="اطلب عرضاً" data-en="Request a demo">اطلب عرضاً</a>
@@ -226,6 +240,47 @@
     <div class="card m-lang"><span class="ico"><i></i></span>
       <h3 data-ar="عربي + English" data-en="Arabic + English">عربي + English</h3>
       <p data-ar="واجهة ثنائية اللغة بالكامل، يمين ويسار، بمصطلحات الصيدلية العراقية." data-en="Fully bilingual RTL/LTR interface, using real Iraqi pharmacy terminology.">واجهة ثنائية اللغة بالكامل، يمين ويسار، بمصطلحات الصيدلية العراقية.</p></div>
+  </div>
+</section>
+
+<section class="section container" id="screens">
+  <div class="kicker" data-ar="من داخل البرنامج" data-en="INSIDE THE APP">من داخل البرنامج</div>
+  <h2 data-ar="شاشات حقيقية من فارما برين" data-en="Real screens from PharmaBrain">شاشات حقيقية من فارما برين</h2>
+
+  <div class="shots">
+    <figure class="shot">
+      <img src="assets/shot-scanner.png" alt="AI invoice scanner results" loading="lazy">
+      <figcaption>
+        <b data-ar="قارئ الفواتير الذكي" data-en="AI invoice reader">قارئ الفواتير الذكي</b>
+        <span data-ar="صورة فاتورة واحدة ← 13 صنفاً مستخرجاً مع الكميات والأسعار وتواريخ الانتهاء، وربط تلقائي بالأدوية الموجودة، وتنبيه عند اختلاف إجمالي الفاتورة."
+              data-en="One invoice photo → 13 items extracted with quantities, prices and expiry dates, auto-linked to your existing stock, with a warning when the invoice total doesn't add up.">صورة فاتورة واحدة ← 13 صنفاً مستخرجاً مع الكميات والأسعار وتواريخ الانتهاء، وربط تلقائي بالأدوية الموجودة، وتنبيه عند اختلاف إجمالي الفاتورة.</span>
+      </figcaption>
+    </figure>
+
+    <div class="shot-pair">
+      <figure class="shot">
+        <img src="assets/shot-pos.png" alt="Point of sale" loading="lazy">
+        <figcaption>
+          <b data-ar="شاشة البيع" data-en="Point of sale">شاشة البيع</b>
+          <span data-ar="بيع بالباركود أو بالبحث، بالعلبة أو بالشريط، مع هامش الربح وتاريخ الانتهاء أمامك."
+                data-en="Sell by barcode or search, by pack or by sheet — margin and expiry always in view.">بيع بالباركود أو بالبحث، بالعلبة أو بالشريط، مع هامش الربح وتاريخ الانتهاء أمامك.</span>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/shot-inventory.png" alt="Inventory" loading="lazy">
+        <figcaption>
+          <b data-ar="الأدوية والمخزون" data-en="Inventory">الأدوية والمخزون</b>
+          <span data-ar="كل دواء بالاسم العلمي والشكل والشركة المصنعة، مع تمييز الصلاحيات القريبة والمنتهية."
+                data-en="Every medicine with its generic, form and manufacturer — near-expiry and expired items highlighted.">كل دواء بالاسم العلمي والشكل والشركة المصنعة، مع تمييز الصلاحيات القريبة والمنتهية.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><em>1</em><p data-ar="صوّر الفاتورة أو أرسلها من هاتفك" data-en="Photograph the invoice, or send it from your phone">صوّر الفاتورة أو أرسلها من هاتفك</p></div>
+    <div class="step"><em>2</em><p data-ar="الذكاء الاصطناعي يقرأ الأصناف والأسعار" data-en="The AI reads the items and prices">الذكاء الاصطناعي يقرأ الأصناف والأسعار</p></div>
+    <div class="step"><em>3</em><p data-ar="راجع وأكّد الاستلام — يدخل المخزون فوراً" data-en="Review, confirm — it lands in your stock">راجع وأكّد الاستلام — يدخل المخزون فوراً</p></div>
   </div>
 </section>
 
