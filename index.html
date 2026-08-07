@@ -130,6 +130,10 @@
   .shot img { cursor: zoom-in; }
   .shot-hint { text-align: center; font-size: 13px; color: var(--faint); margin-top: 16px; }
 
+  /* demo video */
+  .video-wrap { margin-top: 30px; background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(11,58,64,0.10); }
+  .video-wrap video { display: block; width: 100%; height: auto; }
+
   /* lightbox */
   .lightbox {
     position: fixed; inset: 0; z-index: 100; background: rgba(10,10,10,0.92);
@@ -174,6 +178,7 @@
     </a>
     <div class="nav-links">
       <a class="nav-item" href="#features" data-ar="المميزات" data-en="Features">المميزات</a>
+      <a class="nav-item" href="#video" data-ar="شاهد" data-en="Watch">شاهد</a>
       <a class="nav-item" href="#screens" data-ar="الشاشات" data-en="Screens">الشاشات</a>
       <a class="nav-item" href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
       <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
@@ -229,6 +234,17 @@
       <h3 data-ar="عربي + English" data-en="Arabic + English">عربي + English</h3>
       <p data-ar="واجهة ثنائية اللغة بالكامل، يمين ويسار، بمصطلحات الصيدلية العراقية." data-en="Fully bilingual RTL/LTR interface, using real Iraqi pharmacy terminology.">واجهة ثنائية اللغة بالكامل، يمين ويسار، بمصطلحات الصيدلية العراقية.</p></div>
   </div>
+</section>
+
+<section class="section container" id="video">
+  <div class="kicker" data-ar="شاهد" data-en="WATCH">شاهد</div>
+  <h2 data-ar="شاهد كيف يعمل قارئ الفواتير الذكي" data-en="Watch the AI invoice reader at work">شاهد كيف يعمل قارئ الفواتير الذكي</h2>
+  <div class="video-wrap">
+    <video controls playsinline preload="metadata" poster="assets/scanner-demo-poster.jpg">
+      <source src="assets/scanner-demo.mp4" type="video/mp4">
+    </video>
+  </div>
+  <p class="shot-hint" data-ar="تصوير حقيقي من داخل البرنامج — من صورة الفاتورة إلى دخول الأصناف للمخزون خلال دقيقة" data-en="Real in-app footage — from invoice photo to stocked items in about a minute">تصوير حقيقي من داخل البرنامج — من صورة الفاتورة إلى دخول الأصناف للمخزون خلال دقيقة</p>
 </section>
 
 <section class="section container" id="screens">
