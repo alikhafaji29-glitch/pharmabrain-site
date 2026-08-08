@@ -130,9 +130,8 @@
   .shot img { cursor: zoom-in; }
   .shot-hint { text-align: center; font-size: 13px; color: var(--faint); margin-top: 16px; }
 
-  /* demo video */
-  .video-wrap { margin-top: 30px; background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(11,58,64,0.10); }
-  .video-wrap video { display: block; width: 100%; height: auto; }
+  /* demo videos */
+  .shot video { display: block; width: 100%; height: auto; background: #000; }
 
   /* lightbox */
   .lightbox {
@@ -238,13 +237,31 @@
 
 <section class="section container" id="video">
   <div class="kicker" data-ar="شاهد" data-en="WATCH">شاهد</div>
-  <h2 data-ar="شاهد كيف يعمل قارئ الفواتير الذكي" data-en="Watch the AI invoice reader at work">شاهد كيف يعمل قارئ الفواتير الذكي</h2>
-  <div class="video-wrap">
-    <video controls playsinline preload="metadata" poster="assets/scanner-demo-poster.jpg">
-      <source src="assets/scanner-demo.mp4" type="video/mp4">
-    </video>
+  <h2 data-ar="شاهد فارما برين بالعمل" data-en="Watch PharmaBrain at work">شاهد فارما برين بالعمل</h2>
+  <div class="shots">
+    <div class="shot-pair">
+      <figure class="shot">
+        <video controls playsinline preload="metadata" poster="assets/scanner-demo-poster.jpg">
+          <source src="assets/scanner-demo.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <b data-ar="قارئ الفواتير الذكي" data-en="AI invoice reader">قارئ الفواتير الذكي</b>
+          <span data-ar="من صورة الفاتورة إلى دخول الأصناف للمخزون خلال دقيقة — تصوير حقيقي من داخل البرنامج."
+                data-en="From invoice photo to stocked items in about a minute — real in-app footage.">من صورة الفاتورة إلى دخول الأصناف للمخزون خلال دقيقة — تصوير حقيقي من داخل البرنامج.</span>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <video controls playsinline preload="metadata" poster="assets/whatsapp-demo-poster.jpg">
+          <source src="assets/whatsapp-demo.mp4" type="video/mp4">
+        </video>
+        <figcaption>
+          <b data-ar="النواقص وتنبيهات واتساب" data-en="Shortages & WhatsApp alerts">النواقص وتنبيهات واتساب</b>
+          <span data-ar="سجّل طلب المراجع، وعند توفر الدواء أرسل له إشعار واتساب بضغطة واحدة — والرسالة تصله باسم صيدليتك."
+                data-en="Log what a patient asked for — when it arrives, one click sends them a WhatsApp alert in your pharmacy's name.">سجّل طلب المراجع، وعند توفر الدواء أرسل له إشعار واتساب بضغطة واحدة — والرسالة تصله باسم صيدليتك.</span>
+        </figcaption>
+      </figure>
+    </div>
   </div>
-  <p class="shot-hint" data-ar="تصوير حقيقي من داخل البرنامج — من صورة الفاتورة إلى دخول الأصناف للمخزون خلال دقيقة" data-en="Real in-app footage — from invoice photo to stocked items in about a minute">تصوير حقيقي من داخل البرنامج — من صورة الفاتورة إلى دخول الأصناف للمخزون خلال دقيقة</p>
 </section>
 
 <section class="section container" id="screens">
