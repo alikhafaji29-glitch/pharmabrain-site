@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PharmaBrain — نظام صيدليتك الذكي والمتكامل</title>
-<meta name="description" content="فارما برين — نظام إدارة الصيدليات الذكي للعراق: بيع، أدوية، مذاخر، ومراجعين مع قارئ فواتير ذكي. يعمل بدون إنترنت. PharmaBrain — smart pharmacy management: offline-first POS, inventory & AI invoice scanning.">
+<meta name="description" content="فارما برين — برنامج صيدلية ونظام إدارة الصيدليات الذكي للعراق: بيع، أدوية، مذاخر، ومراجعين مع قارئ فواتير ذكي. يعمل بدون إنترنت. يبدأ من 40,000 دينار شهرياً. PharmaBrain — smart pharmacy management: offline-first POS, inventory & AI invoice scanning.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/icon.png">
 <meta property="og:title" content="PharmaBrain — فارما برين">
@@ -161,6 +161,30 @@
   .foot a:hover { color: var(--petrol); }
   .foot .fine { font-family: ui-monospace, monospace; font-size: 12px; color: var(--faint); }
 
+  /* pricing */
+  .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 28px; align-items: stretch; }
+  .plan { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 6px; }
+  .plan.best { border: 2px solid var(--amber); box-shadow: 0 10px 30px rgba(11,58,64,0.10); }
+  .plan .tag { align-self: flex-start; font-size: 12px; font-weight: 700; background: var(--amber); color: var(--on-amber); border-radius: 999px; padding: 2px 10px; }
+  .plan h3 { font-size: 17px; font-weight: 700; color: var(--text); }
+  .plan .price { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 800; color: var(--ink); line-height: 1.2; direction: ltr; text-align: start; unicode-bidi: plaintext; }
+  .plan .price small { font-size: 15px; font-weight: 600; color: var(--muted); }
+  .plan p { font-size: 14px; color: #64748B; }
+  .pay { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 18px; font-size: 14.5px; color: var(--muted); }
+  .pay b { color: var(--text); }
+  .guarantee { margin-top: 18px; background: #fff; border: 1px solid var(--line); border-inline-start: 4px solid var(--amber); border-radius: 12px; padding: 16px 18px; }
+  .guarantee b { color: var(--text); }
+  .guarantee p { font-size: 14.5px; color: var(--muted); margin-top: 4px; }
+
+  /* faq */
+  .faq { margin-top: 24px; display: grid; gap: 10px; max-width: 820px; }
+  .faq details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 0 18px; }
+  .faq summary { cursor: pointer; list-style: none; padding: 15px 0; font-weight: 700; font-size: 15.5px; color: var(--text); display: flex; justify-content: space-between; gap: 12px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--amber); font-weight: 800; font-size: 20px; line-height: 1; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { font-size: 14.5px; color: var(--muted); padding-bottom: 16px; }
+
   @media (max-width: 640px) {
     .nav-links a.nav-item { display: none; }
     .hero { padding-top: 40px; }
@@ -179,7 +203,8 @@
       <a class="nav-item" href="#features" data-ar="المميزات" data-en="Features">المميزات</a>
       <a class="nav-item" href="#video" data-ar="شاهد" data-en="Watch">شاهد</a>
       <a class="nav-item" href="#screens" data-ar="الشاشات" data-en="Screens">الشاشات</a>
-      <a class="nav-item" href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
+      <a class="nav-item" href="#pricing" data-ar="الأسعار" data-en="Pricing">الأسعار</a>
+      <a class="nav-item" href="#faq" data-ar="أسئلة شائعة" data-en="FAQ">أسئلة شائعة</a>
       <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
       <a class="btn-amber" href="https://wa.me/9647735557353?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D8%A7%D9%8B%20%D8%B9%D9%86%20PharmaBrain" data-ar="اطلب عرضاً" data-en="Request a demo">اطلب عرضاً</a>
     </div>
@@ -332,6 +357,90 @@
   <p class="shot-hint" data-ar="اضغط أي صورة لعرضها بالحجم الكامل" data-en="Tap any screenshot to view it full size">اضغط أي صورة لعرضها بالحجم الكامل</p>
 </section>
 
+<section class="section container" id="pricing">
+  <div class="kicker" data-ar="الأسعار" data-en="PRICING">الأسعار</div>
+  <h2 data-ar="اشتراك واضح، بلا مفاجآت" data-en="Clear pricing, no surprises">اشتراك واضح، بلا مفاجآت</h2>
+  <div class="plans">
+    <div class="plan">
+      <h3 data-ar="شهري" data-en="Monthly">شهري</h3>
+      <div class="price">40,000 <small data-ar="د.ع / شهرياً" data-en="IQD / month">د.ع / شهرياً</small></div>
+      <p data-ar="بلا التزام. تجدّد كل شهر أو تتوقف متى شئت." data-en="No commitment. Renew each month or stop any time.">بلا التزام. تجدّد كل شهر أو تتوقف متى شئت.</p>
+    </div>
+    <div class="plan">
+      <h3 data-ar="سنوي" data-en="Yearly">سنوي</h3>
+      <div class="price">400,000 <small data-ar="د.ع / سنوياً" data-en="IQD / year">د.ع / سنوياً</small></div>
+      <p data-ar="يعادل عشرة أشهر فقط — شهران مجاناً مقارنة بالشهري." data-en="The price of ten months — two months free compared with monthly.">يعادل عشرة أشهر فقط — شهران مجاناً مقارنة بالشهري.</p>
+    </div>
+    <div class="plan best">
+      <span class="tag" data-ar="الأوفر" data-en="Best value">الأوفر</span>
+      <h3 data-ar="ثلاث سنوات" data-en="Three years">ثلاث سنوات</h3>
+      <div class="price">1,000,000 <small data-ar="د.ع" data-en="IQD">د.ع</small></div>
+      <p data-ar="أقل من ألف دينار في اليوم، والسعر ثابت طوال المدة. توفّر 200,000 مقارنة بالتجديد السنوي." data-en="Under 1,000 IQD a day, with the price locked for the whole term. Saves 200,000 versus renewing yearly.">أقل من ألف دينار في اليوم، والسعر ثابت طوال المدة. توفّر 200,000 مقارنة بالتجديد السنوي.</p>
+    </div>
+  </div>
+  <div class="pay">
+    <span data-ar="<b>الدفع:</b> كي كارد · المصرف العراقي الأول FIB · زين كاش" data-en="<b>Pay by:</b> Qi Card · First Iraqi Bank (FIB) · ZainCash"><b>الدفع:</b> كي كارد · المصرف العراقي الأول FIB · زين كاش</span>
+    <span data-ar="<b>يشمل:</b> جهازاً واحداً، 200 مسح فواتير و200 رسالة واتساب شهرياً، والتحديثات والدعم" data-en="<b>Includes:</b> one device, 200 invoice scans and 200 WhatsApp messages a month, updates and support"><b>يشمل:</b> جهازاً واحداً، 200 مسح فواتير و200 رسالة واتساب شهرياً، والتحديثات والدعم</span>
+  </div>
+  <div class="guarantee">
+    <b data-ar="ضمان استرداد خلال 14 يوماً" data-en="14-day money-back guarantee">ضمان استرداد خلال 14 يوماً</b>
+    <p data-ar="إن لم يناسبك البرنامج خلال أربعة عشر يوماً من التفعيل، أرسل لنا على واتساب ونعيد لك المبلغ كاملاً دون سؤال، بالطريقة نفسها التي دفعت بها."
+       data-en="If PharmaBrain isn't right for you within fourteen days of activation, message us on WhatsApp and we refund you in full, no questions asked, the same way you paid.">إن لم يناسبك البرنامج خلال أربعة عشر يوماً من التفعيل، أرسل لنا على واتساب ونعيد لك المبلغ كاملاً دون سؤال، بالطريقة نفسها التي دفعت بها.</p>
+  </div>
+</section>
+
+<section class="section container" id="faq">
+  <div class="kicker" data-ar="أسئلة شائعة" data-en="FAQ">أسئلة شائعة</div>
+  <h2 data-ar="قبل أن تشترك" data-en="Before you subscribe">قبل أن تشترك</h2>
+  <div class="faq">
+    <details>
+      <summary data-ar="صيدليتي في محافظة أخرى. كيف أشترك؟" data-en="My pharmacy is in another governorate. How do I subscribe?">صيدليتي في محافظة أخرى. كيف أشترك؟</summary>
+      <p data-ar="كل شيء يتم أونلاين ومن أي محافظة: نعرض لك البرنامج بمكالمة فيديو لمدة عشرين دقيقة، تدفع بالتحويل، ثم نثبّت البرنامج ونفعّله على جهازك عن بُعد، وندرّب موظفيك أونلاين."
+         data-en="Everything happens online, from any governorate: a 20-minute video-call demo, payment by transfer, then we install and activate PharmaBrain on your computer remotely and train your staff online.">كل شيء يتم أونلاين ومن أي محافظة: نعرض لك البرنامج بمكالمة فيديو لمدة عشرين دقيقة، تدفع بالتحويل، ثم نثبّت البرنامج ونفعّله على جهازك عن بُعد، وندرّب موظفيك أونلاين.</p>
+    </details>
+    <details>
+      <summary data-ar="كيف أدفع؟" data-en="How do I pay?">كيف أدفع؟</summary>
+      <p data-ar="بتحويل عبر كي كارد أو المصرف العراقي الأول (FIB) أو زين كاش. نرسل لك الفاتورة ووصل القبض على واتساب."
+         data-en="By transfer through Qi Card, First Iraqi Bank (FIB) or ZainCash. We send the invoice and receipt on WhatsApp.">بتحويل عبر كي كارد أو المصرف العراقي الأول (FIB) أو زين كاش. نرسل لك الفاتورة ووصل القبض على واتساب.</p>
+    </details>
+    <details>
+      <summary data-ar="وإذا لم يناسبني البرنامج؟" data-en="What if it isn't right for me?">وإذا لم يناسبني البرنامج؟</summary>
+      <p data-ar="خلال 14 يوماً من التفعيل نعيد لك المبلغ كاملاً دون سؤال. يكفي أن ترسل لنا على واتساب."
+         data-en="Within 14 days of activation we refund you in full, no questions asked. Just message us on WhatsApp.">خلال 14 يوماً من التفعيل نعيد لك المبلغ كاملاً دون سؤال. يكفي أن ترسل لنا على واتساب.</p>
+    </details>
+    <details>
+      <summary data-ar="هل يعمل بدون إنترنت؟" data-en="Does it work without internet?">هل يعمل بدون إنترنت؟</summary>
+      <p data-ar="نعم. البيع والمخزون والتقارير تعمل بدون إنترنت، والبيع لا يتوقف إذا انقطع الاتصال. يحتاج البرنامج أن يتصل بالإنترنت مرة واحدة على الأقل كل 14 يوماً للتحقق من الاشتراك، أما قارئ الفواتير ورسائل واتساب والنسخة السحابية فتعمل عند توفر الاتصال."
+         data-en="Yes. Sales, stock and reports all work offline, and selling never stops when the connection drops. The app needs to connect at least once every 14 days to check the subscription; the invoice reader, WhatsApp messages and cloud backup work whenever you are online.">نعم. البيع والمخزون والتقارير تعمل بدون إنترنت، والبيع لا يتوقف إذا انقطع الاتصال. يحتاج البرنامج أن يتصل بالإنترنت مرة واحدة على الأقل كل 14 يوماً للتحقق من الاشتراك، أما قارئ الفواتير ورسائل واتساب والنسخة السحابية فتعمل عند توفر الاتصال.</p>
+    </details>
+    <details>
+      <summary data-ar="ماذا يحدث إذا لم أجدّد؟" data-en="What happens if I don't renew?">ماذا يحدث إذا لم أجدّد؟</summary>
+      <p data-ar="لا يتوقف البرنامج ولا يُحذف شيء من بياناتك. يستمر البيع والمخزون والتقارير كالمعتاد، وتنخفض المزايا السحابية والذكية إلى حدّ صغير شهرياً حتى تجدّد، والتجديد يعيد كل شيء فوراً."
+         data-en="The program keeps working and none of your data is deleted. Sales, stock and reports carry on as usual; the cloud and AI features drop to a small monthly allowance until you renew, and renewing restores everything at once.">لا يتوقف البرنامج ولا يُحذف شيء من بياناتك. يستمر البيع والمخزون والتقارير كالمعتاد، وتنخفض المزايا السحابية والذكية إلى حدّ صغير شهرياً حتى تجدّد، والتجديد يعيد كل شيء فوراً.</p>
+    </details>
+    <details>
+      <summary data-ar="أين تُحفظ بياناتي؟" data-en="Where is my data kept?">أين تُحفظ بياناتي؟</summary>
+      <p data-ar="على جهازك أولاً، مع نسخة سحابية خاصة بصيدليتك وحدها. بياناتك لك، ويمكنك طلب تصديرها متى شئت. التفاصيل في سياسة الخصوصية."
+         data-en="On your own computer first, with a cloud copy that belongs to your pharmacy alone. Your data is yours and you can ask for an export at any time. Details are in our privacy policy.">على جهازك أولاً، مع نسخة سحابية خاصة بصيدليتك وحدها. بياناتك لك، ويمكنك طلب تصديرها متى شئت. التفاصيل في سياسة الخصوصية.</p>
+    </details>
+    <details>
+      <summary data-ar="ما الذي أحتاجه لتشغيله؟" data-en="What do I need to run it?">ما الذي أحتاجه لتشغيله؟</summary>
+      <p data-ar="حاسوب يعمل بنظام ويندوز واتصال إنترنت. قارئ الباركود والطابعة اختياريان. الاشتراك يشمل جهازاً واحداً، والجهاز الإضافي أو نقطة البيع الثانية بسعر يُتفق عليه."
+         data-en="A Windows computer and an internet connection. A barcode scanner and printer are optional. The subscription covers one device; an extra computer or second till is priced separately.">حاسوب يعمل بنظام ويندوز واتصال إنترنت. قارئ الباركود والطابعة اختياريان. الاشتراك يشمل جهازاً واحداً، والجهاز الإضافي أو نقطة البيع الثانية بسعر يُتفق عليه.</p>
+    </details>
+    <details>
+      <summary data-ar="عندي مخزون كبير. هل أدخله يدوياً؟" data-en="I have a lot of stock. Do I enter it by hand?">عندي مخزون كبير. هل أدخله يدوياً؟</summary>
+      <p data-ar="لا. نساعدك مجاناً باستيراد المخزون من ملف Excel، ويمكنك إدخال الباقي بتصوير فواتير المذخر."
+         data-en="No. We help you import your stock from an Excel file for free, and you can add the rest by photographing supplier invoices.">لا. نساعدك مجاناً باستيراد المخزون من ملف Excel، ويمكنك إدخال الباقي بتصوير فواتير المذخر.</p>
+    </details>
+    <details>
+      <summary data-ar="كيف أحصل على الدعم؟" data-en="How do I get support?">كيف أحصل على الدعم؟</summary>
+      <p data-ar="عبر واتساب يومياً من 9 صباحاً إلى 9 مساءً، ونرد خلال 24 ساعة. والتحديثات تصلك تلقائياً دون إعادة تثبيت."
+         data-en="On WhatsApp every day from 9am to 9pm, with a reply within 24 hours. Updates arrive automatically, no reinstalling.">عبر واتساب يومياً من 9 صباحاً إلى 9 مساءً، ونرد خلال 24 ساعة. والتحديثات تصلك تلقائياً دون إعادة تثبيت.</p>
+    </details>
+  </div>
+</section>
+
 <!-- full-size screenshot viewer -->
 <div class="lightbox" id="lightbox" hidden>
   <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
@@ -341,7 +450,7 @@
 <section class="container" id="contact">
   <div class="band">
     <h2 data-ar="جرّب فارما برين في صيدليتك" data-en="Try PharmaBrain in your pharmacy">جرّب فارما برين في صيدليتك</h2>
-    <p data-ar="راسلنا على واتساب — نرتب لك عرضاً مباشراً على جهازك." data-en="Message us on WhatsApp — we'll set up a live demo on your machine.">راسلنا على واتساب — نرتب لك عرضاً مباشراً على جهازك.</p>
+    <p data-ar="راسلنا على واتساب — نرتب لك عرضاً مباشراً بمكالمة فيديو، من أي محافظة." data-en="Message us on WhatsApp — we'll show you PharmaBrain live on a video call, wherever you are in Iraq.">راسلنا على واتساب — نرتب لك عرضاً مباشراً بمكالمة فيديو، من أي محافظة.</p>
     <a class="btn-amber" href="https://wa.me/9647735557353?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D8%A7%D9%8B%20%D8%B9%D9%86%20PharmaBrain">
       <span class="wa-ico"></span>
       <span data-ar="اطلب عرضاً عبر واتساب" data-en="Request a demo on WhatsApp">اطلب عرضاً عبر واتساب</span>
